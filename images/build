@@ -1,0 +1,4 @@
+#!/bin/bash
+
+degree45="${1}"
+convert -dispose previous -delay 20 -loop 0 player${degree45}_*.png player${degree45}.gif

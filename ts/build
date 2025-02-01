@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [[ "-f" = "$1" ]]; then
+    npm install @types/pathfinding --save pathfinding
+    npm install browserify --save
+    npm install --saved-dev esmify
+fi
+npm run tsc
+node_modules/browserify/bin/cmd.js dist/*.js -p esmify >bundle.js
+

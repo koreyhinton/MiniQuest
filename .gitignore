@@ -1,0 +1,12 @@
+*~
+*.webp
+*.jpg
+*.png
+*#*
+.backup
+lib/
+ts/node_modules
+ts/*.js
+ts/*.js.map
+ts/dist/*.js
+ts/dist/*.js.map

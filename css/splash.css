@@ -1,0 +1,13 @@
+#splash {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 1280px;
+    height: 720px;
+    background-color: black;
+    z-index: 1000009; /* ui + 1 */
+}
+
+.sub-splash a {
+    z-index: inherit; /* inherit from #splash */
+}

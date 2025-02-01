@@ -1,0 +1,70 @@
+* Build game branch
+#+BEGIN_SRC shell
+# in a separate local-only branch (e.g., game branch)
+git fetch origin main
+git fetch origin media
+git merge origin/main origin/media
+#+END_SRC
+
+* Create gifs
+cd images/
+convert -dispose previous -size 47x39 -delay 20 -loop 0 player0_*.png player0.gif
+
+cd foreground/
+convert -dispose previous -delay 35 -loop 0 pond*.png pond.gif
+
+* Pixelate a photo background image
+#+BEGIN_SRC sh
+# if necessary for webp files, convert to jpg first:
+mogrify -format jpg photoname.webp
+
+PHIXEL_PATH=/k/repos/gh/phixelgator/phixelgator.py  # path to phixelgator
+PHOTO_IN=originals/Playa_del_Postiguet_Alicante_Espana_2014-07-04_DD_47-scaled.jpeg  # existing file to read in
+PHOTO_OUT=./uncropped/Playa_del_Postiguet.png # new file to create
+python3 $PHIXEL_PATH -b4 -p atari2600 $PHOTO_IN $PHOTO_OUT
+#+END_SRC
+
+* See all dimensions of files in dir
+#+BEGIN_SRC sh
+identify -format '%wx%h\n' *.jpg | sort
+#+END_SRC
+
+* Crop all to the same height
+#+BEGIN_SRC sh
+cp uncropped/Playa_del_Postiguet.png ./Playa_del_Postiguet.png
+mogrify -gravity Center -crop 1280x720+0+200 ./Playa_del_Postiguet.png
+# mogrify -gravity South -crop 1280x720+0+0 ./Playa_del_Postiguet.png # mogrify -gravity South -crop 1280x720+0+0 *.png
+#+END_SRC
+* create pixel graphics
+#+BEGIN_SRC sh
+
+
+
+
+### Santa hat ###
+
+
+
+#create png images
+mogrify -format png santa-hat-1087651__340.webp
+mogrify -format png balloon-36286__340.webp
+
+# resize santa hat png image to be 25px in height (ie: in Paint)
+# resize balloon png image to be 170px in height (ie: in Paint)
+
+cd images/
+# uses xpm2html
+./gen santa-hat-1087651__340.png 9 "" 25
+./gen-santa-htm santa-hat-1087651__340.xpm
+
+./gen balloon-36286__340.png 9 "" 34
+./gen-santa-htm balloon-36286__340.xpm
+
+# copy css and table into game
+#+END_SRC
+* replace foreground array
+#+BEGIN_SRC sh
+lst=$(ls images/foreground/ | cut -d '.' -f 1 | sort | uniq |  sed -z "s/\n/.png','/g" )
+js=$(echo "foregrounds=['${lst}']" |sed "s/,''//g")
+echo "$js" >foregrounds.js
+#+END_SRC

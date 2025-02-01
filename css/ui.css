@@ -1,0 +1,15 @@
+.ui {
+    z-index: 1000008;
+}
+#quest {
+    color: white;
+    text-decoration: none;
+    text-shadow: 1px 0 0 #044, 0 -1px 0 #044, 0 1px 0 #044, -1px 0 0 #044;
+    cursor: pointer;
+    position: absolute;
+    left: 10px;
+    top: 658px;
+}
+#compass {
+    cursor: pointer;
+}

@@ -1,0 +1,51 @@
+import {RoadCompass} from './road-compass.js';
+type Position = { x: number, y: number };
+export class PlayerShift {
+    pos: Position;
+    constructor(pos: Position) {
+        this.pos = pos;
+    }
+    static current(): Position {
+        let player = (document as any).getElementById("player");
+        var x = parseInt(
+            window.getComputedStyle(player)
+                .left
+                .replace("px", "")
+        );
+        var y = parseInt(
+            window.getComputedStyle(player)
+                .top
+                .replace("px", "")
+        );
+        return { x, y};
+    }
+    shift(from: string, to: string) {
+        let shiftCompass = RoadCompass.at(from, [to]);
+        let startPt = PlayerShift.current();
+        var x = startPt.x;
+        var y = startPt.y;
+        let h = 720 - 50;
+        let w = 1280 - 50;
+        if (shiftCompass.n()) {
+            y += h;
+        } else if (shiftCompass.s()) {
+            y -= h;
+        } else if (shiftCompass.w()) {
+            x += w;
+        } else if (shiftCompass.e()) {
+            x -= w;
+        }
+
+        // todo: to improve this positioning (so it doesn't look like the player
+                 ended up in some random spot), first try to see if the exact
+                 compass translated spot can reach (via pathfinding) the nearest
+                 safe point. And if so then you'll just use that landing spot.
+                 That calculation will require extra padding to make sure the
+                 player didn't land on a screen edge that will reset player
+                 back to the previous cell unintenionally.
+        let pt = (window as any).nearest_safe_point(x, y);
+
+        (window as any).setp(pt.x, pt.y);
+    }
+}
+(window as any).PlayerShift = PlayerShift;

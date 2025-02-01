@@ -1,0 +1,13 @@
+* FROM GIT: Create a new branch off main and merge in the media branch
+
+#+BEGIN_SRC sh
+# on main branch
+git checkout -b game
+git fetch origin media
+git merge origin/media
+# never push game branch
+#+END_SRC
+
+* FROM WEB: you can play on the web
+
+TODO add itch.io link
