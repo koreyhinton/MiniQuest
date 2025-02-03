@@ -1,6 +1,16 @@
-# 24 Suspects on Christmas Game
+# Mini Quest
 
-OSJ - Old School Jam - Game Jam 2023 Contribution
+Adapted from previous itch game jam version submissions (osj, ffs, 2btn)
+
+# Dependency Installations
+
+## PathFinding.js library Installation
+
+Originally taken from https://github.com/qiao/PathFinding.js/releases), specific release version needed has been archived here:
+
+* koreyhinton.com/MiniQuest/lib/pathfinding-browser.min.js
+
+Installation: copy pathfinding-browser.min.js into ./lib
 
 AGPL v3 License, see COPYING file
 

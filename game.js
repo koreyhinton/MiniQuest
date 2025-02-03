@@ -902,7 +902,14 @@ function mousedown(e) {
     if (editEl.innerHTML == 'Edit') {
         window.pnc(e.clientX, e.clientY);
 
-        if (window.resolveClick(idx, 1280, 720, window.playerXY(), {x: e.clientX, y: 720-e.clientY}, map[idx].road, roadBoundary(idx)).inBounds) {
+        var resolve = window.resolveClick(idx, 1280, 720, window.playerXY(), {x: e.clientX, y: 720-e.clientY}, map[idx].road, roadBoundary(idx));
+        var inBounds = resolve.inBounds;
+        var crossBounds = resolve.crossedBounds
+        window.balloonUpdateDrifts(
+            /*crossingBounds: */ crossBounds,//!inBounds,
+            /*playerRect: */new GeomEl(document.getElementById("player")).rect()
+        );
+        if (inBounds) {
             window.dbg_clear();
         } else {
             window.dbg();
@@ -1190,6 +1197,7 @@ function keydown(e) {
         player_x<0 || player_x>1280 || player_y>720 || player_y<0
     );
     if(/*stuck || */outofbounds) {
+        console.log('out de bounds');
         goto_nearest_safe(player_x, player_y)
     }
 
@@ -1496,6 +1504,15 @@ window.gameloop = function() {
         try_y = dxy.dy;
         try_x = dxy.dx;*/
 
+/*
+        if (window.pathQ.values.length <= 20 &&
+                window.balloonDirectionCalculation.driftOff === false) {
+            window.balloonDirectionCalculation.driftOff = true; // seq: null -> false -> true*
+            balloon(new GeomEl(document.getElementById("player")).rect());
+            window.balloonTrySetDirection(new GeomEl(document.getElementById("player")).rect());
+        }
+*/
+
         if (window.pathQ.values.length > 0) {
             /*if (window.pathQ.values.length > 1) {
                 window.pathQ.values.shift();
@@ -1521,6 +1538,8 @@ window.gameloop = function() {
                 //el.src="images/player"+ang45+".png";
             /*}*/
             window.origAngle = null;
+            /*if (window.clickTarget != null)
+                balloon(new GeomEl(document.getElementById("player")).rect());*/
         }
 
         /*var ctx = document.getElementById("canv").getContext("2d");
@@ -1532,6 +1551,48 @@ window.gameloop = function() {
 
         y = capt_y;
     }
+
+
+    if (window.pathQ.values.length <= 20 &&
+            window.balloonDirectionCalculation.driftOff === false) {
+        console.log("last 20");
+        balloonDirectionCalculation.driftOff = true; // seq: null -> false -> true*
+        balloon(new GeomEl(document.getElementById("player")).rect());
+        window.balloonTrySetDirection(new GeomEl(document.getElementById("player")).rect());
+        console.log(balloonVisible(), window.balloonDirectionCalculation.driftOn, balloonDirectionCalculation.driftOff);
+    }
+
+    if (window.pathQ.values.length <= 1 &&
+            window.balloonDirectionCalculation.driftOnOverride) {
+        // Override:
+        // temporarily path finding was used to drive straight back onto the road:
+        window.balloonDirectionCalculation.driftOn = false;
+        window.balloonDirectionCalculation.driftOnOverride = false;
+        window.balloonDirectionCalculation.dir = null;
+        balloonRemove();
+    }
+
+    if (window.pathQ.values.length <= 1 &&
+            window.balloonDirectionCalculation.driftOffOverride) {
+        // Override:
+        // temporarily path finding was used to drive off road but then it goes back to drift:
+        window.balloonDirectionCalculation.driftOff = true;
+        window.balloonDirectionCalculation.driftOffOverride = false;
+        window.balloonTrySetDirection(new GeomEl(document.getElementById("player")).rect());
+    }
+
+    balloonSetPosition(
+        new GeomEl(document.getElementById("player")).rect()
+    );
+
+    if (balloonVisible() && (window.balloonDirectionCalculation.driftOn || balloonDirectionCalculation.driftOff)) {
+        let balloonDrift =
+            balloonDriftDelta(window.clickTarget, window.playerXY());
+        // todo: rename try_x and try_y to be playerNewDx, playerNewDy
+        try_x = balloonDrift.dx;
+        try_y = balloonDrift.dy;
+    }
+
     if (/*!draw ||*/ speedf <= 0) { try_x=0; try_y=0; }
 
     // y = mx + b

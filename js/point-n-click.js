@@ -58,14 +58,19 @@ window.resolveClick = function(id, w, h, from, to, obstacleSets, compressed) {
     let find = (source, target) => {
         return window.pathFind(id, 1280, 720, source, target, obstacleSets, compressed);
     }
-    let test = (source, target) => {
+/*    let test = (source, target) => {
         return true;
         console.log('test', source, target);
         return window.pathTest(id, 1280, 720, source, target, obstacleSets, compressed);
     };
+*/
+    let crossBoundaryTest = (source, target) => {
+        return !window.pathTest(id, 1280, 720, source, target, obstacleSets, compressed);
+    };
 
     var click = { x: to.x, y: toYInst.geomY() };
-    var inBounds = test(
+    var inBounds = true;
+    var crossed = crossBoundaryTest(
         {x: from.x, y: fromYInst.geomY()},
         {x: click.x, y: toYInst.geomY()}
     );
@@ -131,12 +136,13 @@ window.resolveClick = function(id, w, h, from, to, obstacleSets, compressed) {
 
         //window.goto_nearest_safe(640,360); // recenter
         console.warn("ERROR!", adjStart, adjClick, safeXY, from, to);
-        return { inBounds: false, resolved: true };
+        return { inBounds: false, resolved: true, crossedBounds: crossed };
     }
     console.warn(find(adjStart, adjClick));
     return {
-        inBounds,
-        resolved
+        inBounds: inBounds,
+        resolved: resolved,
+        crossedBounds: crossed
     };
 }
 
