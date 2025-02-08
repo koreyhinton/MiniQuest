@@ -1,0 +1,38 @@
+* Develop in the game git branch aggregate folder
+** Pull to game (aggregate) branch
+Before starting new changes, you need to deal with existing modified files and ensure they've all been committed.
+#+BEGIN_SRC sh
+# Be sure to do this within the game branch folder (MiniQuest__game)!
+
+# stash all the modified and untracked files
+git stash
+git fetch origin main
+git fetch origin media
+git merge origin/main origin/media
+git stash pop
+# after popping the files back, if everything was committed before, then there
+# should be no untracked nor modified files when checking git status:
+git status # should been empty
+#+END_SRC
+
+
+** Commit to main
+#+BEGIN_SRC sh
+# 1. complete development in the MiniQuest__game aggregate branch folder
+cd ../MiniQuest # 2. change to main branch folder
+cp -r ../MiniQuest__game/* ./ # 3. copy in the game files
+# 4. update .git/info/exclude to exclude any media branch files
+git commit # 5.
+git push origin main # 6. 
+#+END_SRC
+
+** Commit to media
+#+BEGIN_SRC sh
+# 1. complete development in the MiniQuest__game aggregate branch folder
+# 2. change to media branch folder
+cd ../MiniQuest__media
+cp -r ../MiniQuest__game/* ./ # 3. copy in the game files
+# 4. update .git/info/exclude to exclude any main branch files
+git commit # 5.
+git push origin media # 6. 
+#+END_SRC

@@ -8,6 +8,3 @@ git merge origin/media
 # never push game branch
 #+END_SRC
 
-* FROM WEB: you can play on the web
-
-TODO add itch.io link

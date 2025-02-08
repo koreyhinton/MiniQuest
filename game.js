@@ -1,5 +1,7 @@
 /*BEGIN*/document.addEventListener('DOMContentLoaded', function() {
 
+ssframes["liftOff"] = liftOff;
+
 function roadBoundary(i) {
     let compressed = null;
     if (map[i].hasOwnProperty('boundary')) {
@@ -1552,7 +1554,7 @@ window.gameloop = function() {
         y = capt_y;
     }
 
-
+    // GAME LOOP - BALLOON DRIFT ANIMATIONS
     if (window.pathQ.values.length <= 20 &&
             window.balloonDirectionCalculation.driftOff === false) {
         console.log("last 20");
@@ -1580,6 +1582,15 @@ window.gameloop = function() {
         window.balloonDirectionCalculation.driftOffOverride = false;
         window.balloonTrySetDirection(new GeomEl(document.getElementById("player")).rect());
     }
+
+    // Player drift toggles
+    //    toggle player lift-off animation
+    //    toggle speed indicator visibility
+    var liftOffVisible = window.balloonDirectionCalculation.driftOff === false
+        && window.pathQ.values.length <= 110;
+    document.getElementById("player").style.visibility = (liftOffVisible) ? "hidden" : "visible";
+    document.getElementById("speed").style.visibility = (balloonVisible) ? "hidden" : "visible";
+    ssframeAnimate("liftOff", liftOffVisible);
 
     balloonSetPosition(
         new GeomEl(document.getElementById("player")).rect()
