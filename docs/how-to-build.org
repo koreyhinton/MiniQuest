@@ -6,6 +6,11 @@ git fetch origin media
 git merge origin/main origin/media
 #+END_SRC
 
+* Create cursors
+save as a 32x32 png in gimp then run:
+#+BEGIN_SRC sh
+convert images/icons/cursors/point-n-drive-go.png icon:images/icons/cursors/point-n-drive-go.cur
+#+END_SRC
 * Create gifs
 cd images/
 convert -dispose previous -size 47x39 -delay 20 -loop 0 player0_*.png player0.gif

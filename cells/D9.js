@@ -1,5 +1,5 @@
 D9={
-    "img":'lawn-3291164_1280.png',
+    "img":'chambord-chateau-de-chambord-royal-castle-renaissance-739184776dd2a746de29b3b88bd9b05a.jpg',//'lawn-3291164_1280.png',
 
     "suspects":[],
 
@@ -13,6 +13,42 @@ D9={
         {"name":"E9","img":'golf-3683340_1280.png',"dots":[{'x':1270,'y':618},{'x':1270,'y':627},{'x':1269,'y':637},{'x':1270,'y':647},{'x':1271,'y':656},{'x':1271,'y':666},{'x':1271,'y':674},{'x':1271,'y':684},{'x':1271,'y':691},{'x':1272,'y':613},{'x':1265,'y':613},{'x':1264,'y':621},{'x':1265,'y':628},{'x':1268,'y':634},{'x':1268,'y':642},{'x':1268,'y':648},{'x':1267,'y':652},{'x':1267,'y':657},{'x':1267,'y':665},{'x':1266,'y':662},{'x':1269,'y':669},{'x':1267,'y':677},{'x':1269,'y':685},{'x':1270,'y':694},{'x':1264,'y':690},{'x':1263,'y':681},{'x':1263,'y':668},{'x':1263,'y':654},{'x':1261,'y':634},{'x':1268,'y':619},]}
     ],
 
+    /*
+        cursors function
+            arguments
+                from argument: player x,y
+                to argument: click target x,y
+            returns {go,stop,exit}
+                (return value gets placed in the cursor url:
+                 point-n-drive-{retval}.cur)
+    */
+    cursors: function(from, to) {
+        let leftExitX = 76;
+        let rightExitX = 466;
+        let castleY = 475;
+        let wallTopY = 493;
+        let wallBottomY = 391;
+        let belowWall = from.y >= from.y;
+        let aboveWall = from.y < wallTopY;
+        if (aboveWall && to.y >= wallTopY) {
+            return "stop";
+        } else if (aboveWall && to.x <= leftExitX) {
+            return "exit";
+        } else if (aboveWall && to.x >= rightExitX) {
+            return "exit";
+        } else if (aboveWall && to.y < castleY) {
+            return "go";
+        } else if (belowWall && to.y > wallBottomY) {
+            return "stop";
+        } else if (belowWall && to.x <= leftExitX) {
+            return "exit";
+        } else if (belowWall && to.x >= rightExitX) {
+            return "exit";
+        } else if (belowWall) {
+            return "go";
+        }
+        return "stop";
+    },
     "safe":[
         {'x':139,'y':513},{'x':295,'y':534},{'x':410,'y':548},{'x':541,'y':566},{'x':666,'y':578},{'x':778,'y':590},{'x':877,'y':603},{'x':956,'y':616},{'x':1106,'y':639},{'x':1202,'y':640}
     ],
