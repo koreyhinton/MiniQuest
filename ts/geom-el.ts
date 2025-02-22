@@ -14,5 +14,22 @@ export class GeomEl {
         let y2 = y1 + parseInt(s.height.replace("px", ""));
         return { x1, y1, x2, y2 };
     }
+    centerXY(): { x: number, y: number } {
+
+        let r = this.rect();
+        let w = r.x2 - r.x1;
+        let h = r.y2 - r.y1;
+        let playerX = r.x1;
+        let playerY = r.y1;
+
+        // same center-point logic as pnc function
+        playerX += (w/2.0);
+        playerY += (h/2.0);
+
+        let x = playerX;
+        let y = playerY;
+
+        return { x, y };
+    }
 }
 (window as any).GeomEl = GeomEl;

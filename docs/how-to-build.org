@@ -4,6 +4,8 @@
 git fetch origin main
 git fetch origin media
 git merge origin/main origin/media
+cd ts/
+./build
 #+END_SRC
 
 * Create cursors

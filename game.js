@@ -122,7 +122,6 @@ var splashIntervalId=setInterval(function() {
     }
 }, 1100);
 
-angle=225;
 var px=-1  //player x, each gameloop needs position data immediately
 var py=-1  //gets assigned in setp function
 
@@ -594,6 +593,7 @@ function get_exit(arr, exit) {
 }
 
 function shift_screen(from, to) {
+console.log("shift_screen", from, to);
    var sp = new SceneProps();
    sp.clear();
    sp[to.toLowerCase()]?.();
@@ -870,6 +870,32 @@ window.playerXY = function() {
     return { x: parseInt(playerX), y: 720-parseInt(playerY) };
 };
 
+function debounceCursors(playerCenterXY, targetXY) {
+    var cursorName = "stop";
+    // ensures that if a direction change makes image slightly larger or smaller
+    // (ie: player45.png (45 degrees) is a different size from player0.png (0 degrees))
+    // then you won't drive somewhere and end up outside the drivable bounds
+    var offsets = [[0,0],[7,0],[0,7],[7,7],[-7,0],[0,-7],[-7,-7]];
+    for (var i=0; i<offsets.length; i++) {
+        let x = targetXY.x + offsets[i][0];
+        let y = targetXY.y + offsets[i][1];
+        cursorName = map[idx].cursors(playerCenterXY, {x,y});
+        if (cursorName == "stop") {
+            return "stop";
+        }
+    }
+    return cursorName;
+}
+
+function mousemove(e) {
+    let x = e.clientX;
+    let y = e.clientY;
+    let playerCenterXY = new GeomEl(document.getElementById("player"))
+        .centerXY();
+    let cursorName = debounceCursors(playerCenterXY, {x, y});
+    document.body.style.cursor = `url(images/icons/cursors/point-n-drive-${cursorName}.cur) 3 2, pointer`;
+}
+
 function mousedown(e) {
     e = e || window.event;
     console.log("{'x':"+e.clientX + "," + "'y':"+e.clientY+"},")
@@ -879,6 +905,11 @@ function mousedown(e) {
         e.view.event.preventDefault();
         return;
     }
+
+    let playerCenterXY = new GeomEl(document.getElementById("player"))
+        .centerXY();
+    let cursorName = debounceCursors(playerCenterXY, {x:e.clientX, y:e.clientY});
+    if (cursorName == "stop") return;
 
     if (inside_rect([{x: e.clientX, y: e.clientY}], new GeomEl(document.getElementById("compass")).rect())) {
         toggleCompass(document.getElementById("mapTile")==null);
@@ -976,19 +1007,6 @@ window.nearest_safe_point = function(x,y, omit) {
         if (cmp<min_dist) {min_dist=cmp;min_idx=i;}
     }
     return map[idx].safe[min_idx];
-}
-
-
-window.goto_nearest_safe = function(x,y) {
-    var min_dist=99999
-    var min_idx=-1
-    for (var i=0;i<map[idx].safe.length;i++) {
-        var sx=map[idx].safe[i].x;
-        var sy=map[idx].safe[i].y;
-        var cmp=Math.abs(sx-x)+Math.abs(sy-y);
-        if (cmp<min_dist) {min_dist=cmp;min_idx=i;}
-    }
-    setp(map[idx].safe[min_idx].x,map[idx].safe[min_idx].y)
 }
 
 function point_at_nearest_safe(x,y) {
@@ -1200,7 +1218,6 @@ function keydown(e) {
     );
     if(/*stuck || */outofbounds) {
         console.log('out de bounds');
-        goto_nearest_safe(player_x, player_y)
     }
 
     // if (keydown_positions.length>2) {
@@ -1883,7 +1900,6 @@ var intId=setInterval(function(){
         game.style.backgroundImage="url('images/background/"+map[idx].img+"')"
         var el=document.createElement("img");
         el.id="player";
-        el.src="images/player225.png";
         el.style.position="absolute";
         //setp(800,555,el)
         /*el.style.left="500px";
@@ -1910,7 +1926,11 @@ var intId=setInterval(function(){
         wolf.style.visibility="hidden";
         game.appendChild(wolf)
 
-        setp(500,530,el);
+        angle = map[idx].entrances["00"].angle;
+        el.src = `images/player${angle}.png`;
+        setp(map[idx].entrances["00"].x, map[idx].entrances["00"].y, el);
+
+        //setp(500,530,el);
 
         /*global*/culprit=document.createElement("img");
         culprit.id="culprit";
@@ -2044,6 +2064,7 @@ var intId=setInterval(function(){
 
         document.onkeydown = keydown;
         document.onclick=mousedown;
+        document.onmousemove = mousemove;
 
         /*
         draw_button("up",1000,600-3);

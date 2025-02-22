@@ -5,7 +5,8 @@ D9={
 
     "entrances": {
         "E9":{'x':1200,'y':645},//{'x':1214,'y':656},
-        "C9":{'x':80,'y':510}//{'x':42,'y':507}
+        "C9":{'x':80,'y':510},//{'x':42,'y':507}
+        "00":{'x':258,'y':480, 'angle': 0} //game-started-here entrance
     },
 
     "exits":[
@@ -23,20 +24,32 @@ D9={
                  point-n-drive-{retval}.cur)
     */
     cursors: function(from, to) {
+        // console test (ensure starting position is a go!): //map[idx].cursors(new GeomEl(document.getElementById("player")).centerXY(), new GeomEl(document.getElementById("player")).centerXY())
         let leftExitX = 76;
-        let rightExitX = 466;
-        let castleY = 475;
-        let wallTopY = 493;
-        let wallBottomY = 391;
-        let belowWall = from.y >= from.y;
+        let rightExitX = 1208;//466;
+        let castleY = 460;
+        let wallTopY = 538; //518; //493;
+        let wallBottomY = 607; //548; //391;
+        let belowWall = from.y >= wallTopY;
         let aboveWall = from.y < wallTopY;
+
+        debugCursorD9 = false;//true;
+        if (debugCursorD9) {
+            document.getElementById("debugCursorD9")?.remove();
+            var debugHtml = `<div style="position:absolute;left:${to.x}px;top:${to.y}px;background-color:white;"><textarea style="width:500px;height:120px;">(${to.x},${to.y}) aboveWall=${aboveWall} belowWall=${belowWall} playerXY=(${from.x},${from.y})</textarea></div>`;
+            let container = document.createElement("div");
+            container.id = "debugCursorD9";
+            container.innerHTML = debugHtml;
+            document.getElementById("game").appendChild(container);
+        }
+
         if (aboveWall && to.y >= wallTopY) {
             return "stop";
-        } else if (aboveWall && to.x <= leftExitX) {
+        } else if (aboveWall && to.x <= leftExitX && to.y > castleY) {
             return "exit";
-        } else if (aboveWall && to.x >= rightExitX) {
+        } else if (aboveWall && to.x >= rightExitX && to.y > castleY) {
             return "exit";
-        } else if (aboveWall && to.y < castleY) {
+        } else if (aboveWall && to.y > castleY) {
             return "go";
         } else if (belowWall && to.y > wallBottomY) {
             return "stop";

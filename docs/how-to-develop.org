@@ -13,6 +13,10 @@ git stash pop
 # after popping the files back, if everything was committed before, then there
 # should be no untracked nor modified files when checking git status:
 git status # should been empty
+
+# build typescript
+cd ts/
+./build
 #+END_SRC
 
 
