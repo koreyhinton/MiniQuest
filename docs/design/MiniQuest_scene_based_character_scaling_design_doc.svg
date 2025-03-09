@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="750" height="750" viewBox="0,0,750,750">
+    <polyline points="412 132 419 125 426 132 419 139 412 132" stroke="green" fill="green" stroke-width="1" id="polyline3"/>
+    <text x="429" y="136" fill="black" font-size="smaller" id="text8">scene-based character scaling</text>
+    <text x="415" y="137" fill="white" font-size="smaller" id="text9">+</text>
+    <rect rx="0" ry="0" x="70" y="41" width="273" height="238" stroke="black" fill="transparent" stroke-width="1" id="rect1"/>
+    <rect rx="0" ry="0" x="344" y="41" width="273" height="238" stroke="black" fill="transparent" stroke-width="1" id="rect2"/>
+    <rect rx="0" ry="0" x="74" y="137" width="264" height="30" stroke="black" fill="transparent" stroke-width="1" id="rect3"/>
+    <polyline points="322 154 367 154 357 144 367 154 357 164" stroke="black" fill="transparent" stroke-width="1" id="polyline1"/>
+    <text x="316" y="61" fill="black" id="text1">D9</text>
+    <text x="591" y="59" fill="black" id="text2">E9</text>
+    <rect rx="0" ry="0" x="74" y="197" width="264" height="30" stroke="black" fill="transparent" stroke-width="1" id="rect4"/>
+    <line x1="58" y1="182" x2="150" y2="182" stroke="black" stroke-width="1" stroke-dasharray="0 10 0" id="line1"/>
+    <text x="147" y="186" fill="black" id="text3">retaining wall</text>
+    <line x1="272" y1="181" x2="349" y2="181" stroke="black" stroke-width="1" stroke-dasharray="0 10 0" id="line2"/>
+    <line x1="374" y1="220" x2="434" y2="171" stroke="black" stroke-width="1" id="line3"/>
+    <line x1="402" y1="197" x2="462" y2="148" stroke="black" stroke-width="1" id="line4"/>
+    <line x1="461" y1="148" x2="596" y2="202" stroke="black" stroke-width="1" id="line5"/>
+    <line x1="595" y1="202" x2="343" y2="259" stroke="black" stroke-width="1" id="line6"/>
+    <line x1="375" y1="220" x2="345" y2="220" stroke="black" stroke-width="1" id="line7"/>
+    <polyline points="377 229 327 216 332.23259018078045 224.9095454429505 327 216 335.9095454429505 210.76740981921955" stroke="black" fill="transparent" stroke-width="1" id="polyline2"/>
+    <text x="412" y="214" fill="black" id="text4">waterway</text>
+    <text x="100" y="217" fill="black" id="text5">waterway</text>
+    <circle cx="494" cy="107" r="10" fill="black" stroke="black" stroke-width="1" id="circle1"/>
+    <rect rx="10" ry="10" x="411" y="81" width="100" height="30" stroke="black" fill="transparent" stroke-width="1" id="rect5"/>
+    <circle cx="440" cy="107" r="10" fill="black" stroke="black" stroke-width="1" id="circle2"/>
+    <rect rx="10" ry="10" x="478" y="56" width="23" height="23" stroke="black" fill="transparent" stroke-width="1" id="rect6"/>
+    <text x="511" y="108" fill="black" id="text6">player scaled up</text>
+    <rect rx="10" ry="10" x="106" y="106" width="15" height="16" stroke="black" fill="transparent" stroke-width="1" id="rect7"/>
+    <circle cx="117" cy="147" r="8" fill="black" stroke="black" stroke-width="1" id="circle4"/>
+    <circle cx="92" cy="147" r="8" fill="black" stroke="black" stroke-width="1" id="circle3"/>
+    <rect rx="10" ry="10" x="80" y="123" width="51" height="24" stroke="black" fill="transparent" stroke-width="1" id="rect8"/>
+    <text x="137" y="132" fill="black" id="text7">player scaled down</text>
+</svg>

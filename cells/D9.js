@@ -6,7 +6,7 @@ D9={
     "entrances": {
         "E9":{'x':1200,'y':645},//{'x':1214,'y':656},
         "C9":{'x':80,'y':510},//{'x':42,'y':507}
-        "00":{'x':258,'y':480, 'angle': 0} //game-started-here entrance
+        "00":{'x':258,'y':480, 'angle': 0} //600 //game-started-here entrance
     },
 
     "exits":[
@@ -29,11 +29,11 @@ D9={
         let rightExitX = 1208;//466;
         let castleY = 460;
         let wallTopY = 538; //518; //493;
-        let wallBottomY = 607; //548; //391;
+        let wallBottomY = 585; //548; //391;
         let belowWall = from.y >= wallTopY;
         let aboveWall = from.y < wallTopY;
 
-        debugCursorD9 = false;//true;
+        debugCursorD9 = false;
         if (debugCursorD9) {
             document.getElementById("debugCursorD9")?.remove();
             var debugHtml = `<div style="position:absolute;left:${to.x}px;top:${to.y}px;background-color:white;"><textarea style="width:500px;height:120px;">(${to.x},${to.y}) aboveWall=${aboveWall} belowWall=${belowWall} playerXY=(${from.x},${from.y})</textarea></div>`;
@@ -51,7 +51,7 @@ D9={
             return "exit";
         } else if (aboveWall && to.y > castleY) {
             return "go";
-        } else if (belowWall && to.y > wallBottomY) {
+        } else if (belowWall && to.y < wallBottomY) {
             return "stop";
         } else if (belowWall && to.x <= leftExitX) {
             return "exit";

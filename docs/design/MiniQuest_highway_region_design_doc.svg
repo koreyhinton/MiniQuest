@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="750" height="750" viewBox="0,0,750,750">
+    <line x1="70" y1="293" x2="634" y2="293" stroke="black" stroke-width="3" id="line1"/>
+    <text x="72" y="311" fill="black" id="text1">retaining wall</text>
+    <text x="50" y="44" fill="black" id="text2">index.html?cell=D9&amp;region=1</text>
+    <polyline points="128 70 135 63 142 70 135 77 128 70" stroke="green" fill="green" stroke-width="1" id="polyline1"/>
+    <text x="131" y="75" fill="white" id="text3" font-size="smaller">+</text>
+    <text x="147" y="75" fill="black" id="text4" font-size="smaller">forgiving URL numbering (ie: non-existent region=3 becomes region=2)</text>
+    <rect rx="0" ry="0" x="77" y="358" width="558" height="65" stroke="black" fill="transparent" stroke-width="1" id="rect1"/>
+    <text x="92" y="386" fill="black" id="text5">West Region</text>
+    <text x="93" y="405" fill="black" id="text6">2 exit</text>
+    <text x="572" y="406" fill="black" id="text8">2 exit</text>
+    <text x="523" y="386" fill="black" id="text7">East Region</text>
+    <text x="85" y="213" fill="black" id="text9">West Region</text>
+    <text x="86" y="232" fill="black" id="text10">1 exit</text>
+    <text x="516" y="213" fill="black" id="text11">East Region</text>
+    <text x="565" y="233" fill="black" id="text12">1 exit</text>
+    <rect rx="0" ry="0" x="70" y="185" width="558" height="65" stroke="black" fill="transparent" stroke-width="1" id="rect2"/>
+    <circle cx="348" cy="393" r="3" fill="black" stroke="black" stroke-width="1" id="circle1"/>
+    <polyline points="412 482 419 475 426 482 419 489 412 482" stroke="green" fill="green" stroke-width="1" id="polyline3"/>
+    <text x="415" y="487" fill="white" font-size="smaller" id="text15">+</text>
+    <text x="429" y="486" fill="black" font-size="smaller" id="text14">(scene-)unreachable object (puzzle)</text>
+    <polyline points="351 399 440 470 438.8559171180802 459.8303743829351 440 470 429.8303743829351 471.1440828819198" stroke="black" fill="transparent" stroke-width="1" id="polyline2"/>
+    <rect rx="10" ry="10" x="275" y="152" width="29" height="15" stroke="black" fill="transparent" stroke-width="1" id="rect3"/>
+    <rect rx="0" ry="0" x="280" y="167" width="21" height="29" stroke="black" fill="transparent" stroke-width="1" id="rect4"/>
+    <rect rx="10" ry="10" x="241" y="179" width="73" height="18" stroke="black" fill="transparent" stroke-width="1" id="rect5"/>
+    <circle cx="260" cy="199" r="10" fill="black" stroke="black" stroke-width="1"/>
+    <circle cx="301" cy="199" r="10" fill="black" stroke="black" stroke-width="1"/>
+    <polyline points="321 154 328 147 335 154 328 161 321 154" stroke="green" fill="green" stroke-width="1"/>
+    <text x="339" y="158" fill="black" font-size="smaller" id="text16">npc (quest menu) with speech cursor (on hover)</text>
+    <text x="324" y="159" fill="white" font-size="smaller" id="text20">+</text>
+    <rect rx="0" ry="0" x="187" y="212" width="320" height="18" stroke="black" fill="gold" stroke-width="1" id="rect6"/>
+    <rect rx="0" ry="0" x="202" y="369" width="320" height="18" stroke="black" fill="gold" stroke-width="1" id="rect7"/>
+    <rect rx="10" ry="10" x="99" y="164" width="64" height="21" stroke="black" fill="transparent" stroke-width="1" id="rect8"/>
+    <circle cx="118" cy="190" r="10" fill="black" stroke="black" stroke-width="1" id="circle3"/>
+    <circle cx="149" cy="188" r="10" fill="black" stroke="black" stroke-width="1"/>
+    <text x="65" y="154" fill="black" id="text17">player</text>
+    <circle cx="142" cy="153" r="10" fill="black" stroke="black" stroke-width="1" id="circle2"/>
+    <text x="534" y="243" fill="black" id="text18">X</text>
+    <polyline points="548 240 610 273 607.0233085501663 263.2487693884758 610 273 600.2487693884758 275.97669144983365" stroke="black" fill="transparent" stroke-width="1" id="polyline4"/>
+    <text x="617" y="282" fill="black" id="text19">click target</text>
+    <line x1="184" y1="215" x2="362" y2="215" stroke="black" stroke-width="1" id="line2"/>
+    <line x1="279" y1="270" x2="279" y2="270" stroke="black" stroke-width="1" id="line3"/>
+    <line x1="362" y1="214" x2="362" y2="226" stroke="black" stroke-width="1" id="line4"/>
+    <line x1="362" y1="226" x2="508" y2="226" stroke="black" stroke-width="1" id="line5"/>
+    <polyline points="186 237 193 230 200 237 193 244 186 237" stroke="green" fill="green" stroke-width="1" id="polyline5"/>
+    <text x="189" y="242" fill="white" font-size="smaller" id="text22">+</text>
+    <text x="203" y="241" fill="black" font-size="smaller" id="text21">pathfind in reduced region highway</text>
+    <line x1="168" y1="170" x2="216" y2="206" stroke="black" stroke-width="1" id="line6"/>
+    <line x1="500" y1="220" x2="533" y2="238" stroke="black" stroke-width="1" id="line7"/>
+    <polyline points="176 135 183 128 190 135 183 142 176 135" stroke="green" fill="green" stroke-width="1"/>
+    <text x="179" y="140" fill="white" font-size="smaller">+</text>
+    <text x="193" y="130" fill="black" font-size="smaller" id="text23">on/off highway custom algorithm to move to nearest highway on/off pt</text>
+    <polyline points="217 146 185 174 195.6066017177982 174.70710678118655 185 174 185.70710678118655 163.3933982822018" stroke="black" fill="transparent" stroke-width="1" id="polyline6"/>
+    <polyline points="446 140 521 229 521.9239528607504 218.17655220263794 521 229 510.17655220263794 228.07604713924962" stroke="black" fill="transparent" stroke-width="1" id="polyline7"/>
+    <text x="193" y="142" fill="black" font-size="smaller" id="text24">only for highway of player's current region</text>
+    <text x="7" y="537" fill="black" id="text25" font-size="smaller">* highway must curve along a curved region so it can be accessed at every drive-able point!</text>
+    <text x="210" y="387" fill="black" id="text26">*</text>
+</svg>

@@ -592,8 +592,7 @@ function get_exit(arr, exit) {
     }
 }
 
-function shift_screen(from, to) {
-console.log("shift_screen", from, to);
+function shift_screen (from, to) {
    var sp = new SceneProps();
    sp.clear();
    sp[to.toLowerCase()]?.();
