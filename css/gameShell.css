@@ -1,0 +1,36 @@
+
+#gameShell {
+    position: absolute;
+    left: 0px;
+    top: 720px;
+    color: white;
+    background-color: black;
+    height: 28px;
+    width: 1265px;
+    padding-left: 15px;
+    padding-top: 15px;
+    z-index: 100000;
+    font-family: Courier;
+    font-size: 18px;
+}
+
+#gameShell div input[type="text"] {
+    position: absolute;
+    left: 15px;
+    top: 0px;
+    pointer-events: none;
+    background: transparent;
+    border: 0;
+    color: white;
+    padding-left: 25px;
+    padding-top: 15px;
+    font-family: Courier;
+    font-size: 18px;
+    color: white;
+    width: 100%
+}
+
+#gameShell div input[overlay] {
+    opacity: 0.6;
+    color: white;
+}
